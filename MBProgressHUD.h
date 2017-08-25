@@ -231,7 +231,7 @@ NS_ASSUME_NONNULL_BEGIN
 // * E.g., CGPointMake(0.f, MBProgressMaxOffset) would position the HUD centered on the bottom edge.
 // */
 //@property (assign, nonatomic) CGPoint offset UI_APPEARANCE_SELECTOR;
-@property (assign, nonatomic) MBProgressVerticalPositionInfo info;
+@property (assign, nonatomic) MBProgressVerticalPositionInfo verticalPositionInfo;
 
 /**
  * The amount of space between the HUD edge and the HUD elements (labels, indicators or custom views).

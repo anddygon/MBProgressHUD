@@ -557,7 +557,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
                                      attribute:NSLayoutAttributeCenterX
                                      multiplier:1.f
                                      constant:0]];
-    switch (_info.position) {
+    switch (_verticalPositionInfo.position) {
         case MBProgressVerticalPositionTop:
             [centeringConstraints addObject:[NSLayoutConstraint
                                              constraintWithItem:bezel
@@ -566,7 +566,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
                                              toItem:self
                                              attribute:NSLayoutAttributeTop
                                              multiplier:1.f
-                                             constant:_info.offset]];
+                                             constant:_verticalPositionInfo.offset]];
         case MBProgressVerticalPositionCenter:
             [centeringConstraints addObject:[NSLayoutConstraint
                                              constraintWithItem:bezel
@@ -575,7 +575,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
                                              toItem:self
                                              attribute:NSLayoutAttributeCenterY
                                              multiplier:1.f
-                                             constant:_info.offset]];
+                                             constant:_verticalPositionInfo.offset]];
         case MBProgressVerticalPositionBottom:
             [centeringConstraints addObject:[NSLayoutConstraint
                                              constraintWithItem:bezel
@@ -584,7 +584,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
                                              toItem:self
                                              attribute:NSLayoutAttributeBottom
                                              multiplier:1.f
-                                             constant:_info.offset]];
+                                             constant:_verticalPositionInfo.offset]];
         default:
             break;
     }
@@ -714,9 +714,17 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
 //    }
 //}
 
-- (void)setInfo:(MBProgressVerticalPositionInfo)info {
-    if (!(info.position == _info.position && info.offset == _info.position)) {
-        _info = info;
+//- (void)setInfo:(MBProgressVerticalPositionInfo)info {
+//    if (!(info.position == _verticalPositionInfo.position && info.offset == _verticalPositionInfo.position)) {
+//        _verticalPositionInfo = info;
+//        [self setNeedsUpdateConstraints];
+//    }
+//}
+
+- (void)setVerticalPositionInfo:(MBProgressVerticalPositionInfo)verticalPositionInfo {
+    if (!(verticalPositionInfo.position == _verticalPositionInfo.position &&
+          verticalPositionInfo.offset == _verticalPositionInfo.offset)) {
+        _verticalPositionInfo = verticalPositionInfo;
         [self setNeedsUpdateConstraints];
     }
 }
