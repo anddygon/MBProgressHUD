@@ -585,9 +585,9 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
                                              attribute:NSLayoutAttributeBottom
                                              multiplier:1.f
                                              constant:_verticalPositionInfo.offset]];
-        default:
-            break;
     }
+    [self applyPriority:998.f toConstraints:centeringConstraints];
+    [self addConstraints:centeringConstraints];
 //    CGPoint offset = self.offset;
 //    NSMutableArray *centeringConstraints = [NSMutableArray array];
 //    [centeringConstraints addObject:[NSLayoutConstraint constraintWithItem:bezel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:offset.x]];
