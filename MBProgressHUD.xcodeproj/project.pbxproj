@@ -14,7 +14,7 @@
 		D286A7531518C70F00E13FB8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D286A7521518C70F00E13FB8 /* MBProgressHUD.m */; };
 		D286A75E1518C89600E13FB8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D286A75D1518C89600E13FB8 /* UIKit.framework */; };
 		D286A76F1518CAAD00E13FB8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D286A76E1518CAAD00E13FB8 /* CoreGraphics.framework */; };
-		E110CD291F5017A200A3D44B /* MBProgressPosition.h in Headers */ = {isa = PBXBuildFile; fileRef = E110CD281F5017A200A3D44B /* MBProgressPosition.h */; };
+		E110CD291F5017A200A3D44B /* MBProgressVerticalPositionInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = E110CD281F5017A200A3D44B /* MBProgressVerticalPositionInfo.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,7 +40,7 @@
 		D286A7521518C70F00E13FB8 /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = SOURCE_ROOT; };
 		D286A75D1518C89600E13FB8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D286A76E1518CAAD00E13FB8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		E110CD281F5017A200A3D44B /* MBProgressPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressPosition.h; sourceTree = SOURCE_ROOT; };
+		E110CD281F5017A200A3D44B /* MBProgressVerticalPositionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressVerticalPositionInfo.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +106,7 @@
 			children = (
 				D286A7511518C70F00E13FB8 /* MBProgressHUD.h */,
 				D286A7521518C70F00E13FB8 /* MBProgressHUD.m */,
-				E110CD281F5017A200A3D44B /* MBProgressPosition.h */,
+				E110CD281F5017A200A3D44B /* MBProgressVerticalPositionInfo.h */,
 				1315DD72178044770032507D /* Supporting Files */,
 			);
 			path = MBProgressHUD;
@@ -120,7 +120,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D104D941ACA373100973364 /* MBProgressHUD.h in Headers */,
-				E110CD291F5017A200A3D44B /* MBProgressPosition.h in Headers */,
+				E110CD291F5017A200A3D44B /* MBProgressVerticalPositionInfo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

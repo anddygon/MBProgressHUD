@@ -29,12 +29,13 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
+#import "MBProgressVerticalPositionInfo.h"
 
 @class MBBackgroundView;
 @protocol MBProgressHUDDelegate;
 
 
-extern CGFloat const MBProgressMaxOffset;
+//extern CGFloat const MBProgressMaxOffset;
 
 typedef NS_ENUM(NSInteger, MBProgressHUDMode) {
     /// UIActivityIndicatorView.
@@ -224,12 +225,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (assign, nonatomic) MBProgressHUDAnimation animationType UI_APPEARANCE_SELECTOR;
 
-/**
- * The bezel offset relative to the center of the view. You can use MBProgressMaxOffset
- * and -MBProgressMaxOffset to move the HUD all the way to the screen edge in each direction.
- * E.g., CGPointMake(0.f, MBProgressMaxOffset) would position the HUD centered on the bottom edge.
- */
-@property (assign, nonatomic) CGPoint offset UI_APPEARANCE_SELECTOR;
+///**
+// * The bezel offset relative to the center of the view. You can use MBProgressMaxOffset
+// * and -MBProgressMaxOffset to move the HUD all the way to the screen edge in each direction.
+// * E.g., CGPointMake(0.f, MBProgressMaxOffset) would position the HUD centered on the bottom edge.
+// */
+//@property (assign, nonatomic) CGPoint offset UI_APPEARANCE_SELECTOR;
+@property (assign, nonatomic) MBProgressVerticalPositionInfo info;
 
 /**
  * The amount of space between the HUD edge and the HUD elements (labels, indicators or custom views).
@@ -423,8 +425,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIColor *detailsLabelColor __attribute__((deprecated("Use detailsLabel.textColor instead.")));
 @property (assign, nonatomic) CGFloat opacity __attribute__((deprecated("Customize bezelView properties instead.")));
 @property (strong, nonatomic) UIColor *color __attribute__((deprecated("Customize the bezelView color instead.")));
-@property (assign, nonatomic) CGFloat xOffset __attribute__((deprecated("Set offset.x instead.")));
-@property (assign, nonatomic) CGFloat yOffset __attribute__((deprecated("Set offset.y instead.")));
+//@property (assign, nonatomic) CGFloat xOffset __attribute__((deprecated("Set offset.x instead.")));
+//@property (assign, nonatomic) CGFloat yOffset __attribute__((deprecated("Set offset.y instead.")));
 @property (assign, nonatomic) CGFloat cornerRadius __attribute__((deprecated("Set bezelView.layer.cornerRadius instead.")));
 @property (assign, nonatomic) BOOL dimBackground __attribute__((deprecated("Customize HUD background properties instead.")));
 @property (strong, nonatomic) UIColor *activityIndicatorColor __attribute__((deprecated("Use UIAppearance to customize UIActivityIndicatorView. E.g.: [UIActivityIndicatorView appearanceWhenContainedIn:[MBProgressHUD class], nil].color = [UIColor redColor];")));

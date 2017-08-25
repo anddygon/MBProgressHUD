@@ -18,7 +18,7 @@
 
 #define MBMainThreadAssert() NSAssert([NSThread isMainThread], @"MBProgressHUD needs to be accessed on the main thread.");
 
-CGFloat const MBProgressMaxOffset = 1000000.f;
+//CGFloat const MBProgressMaxOffset = 1000000.f;
 
 static const CGFloat MBDefaultPadding = 4.f;
 static const CGFloat MBDefaultLabelFontSize = 16.f;
@@ -548,12 +548,52 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
     }
 
     // Center bezel in container (self), applying the offset if set
-    CGPoint offset = self.offset;
     NSMutableArray *centeringConstraints = [NSMutableArray array];
-    [centeringConstraints addObject:[NSLayoutConstraint constraintWithItem:bezel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:offset.x]];
-    [centeringConstraints addObject:[NSLayoutConstraint constraintWithItem:bezel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.f constant:offset.y]];
-    [self applyPriority:998.f toConstraints:centeringConstraints];
-    [self addConstraints:centeringConstraints];
+    [centeringConstraints addObject:[NSLayoutConstraint
+                                     constraintWithItem:bezel
+                                     attribute:NSLayoutAttributeCenterX
+                                     relatedBy:NSLayoutRelationEqual
+                                     toItem:self
+                                     attribute:NSLayoutAttributeCenterX
+                                     multiplier:1.f
+                                     constant:0]];
+    switch (_info.position) {
+        case MBProgressVerticalPositionTop:
+            [centeringConstraints addObject:[NSLayoutConstraint
+                                             constraintWithItem:bezel
+                                             attribute:NSLayoutAttributeTop
+                                             relatedBy:NSLayoutRelationEqual
+                                             toItem:self
+                                             attribute:NSLayoutAttributeTop
+                                             multiplier:1.f
+                                             constant:_info.offset]];
+        case MBProgressVerticalPositionCenter:
+            [centeringConstraints addObject:[NSLayoutConstraint
+                                             constraintWithItem:bezel
+                                             attribute:NSLayoutAttributeCenterY
+                                             relatedBy:NSLayoutRelationEqual
+                                             toItem:self
+                                             attribute:NSLayoutAttributeCenterY
+                                             multiplier:1.f
+                                             constant:_info.offset]];
+        case MBProgressVerticalPositionBottom:
+            [centeringConstraints addObject:[NSLayoutConstraint
+                                             constraintWithItem:bezel
+                                             attribute:NSLayoutAttributeBottom
+                                             relatedBy:NSLayoutRelationEqual
+                                             toItem:self
+                                             attribute:NSLayoutAttributeBottom
+                                             multiplier:1.f
+                                             constant:_info.offset]];
+        default:
+            break;
+    }
+//    CGPoint offset = self.offset;
+//    NSMutableArray *centeringConstraints = [NSMutableArray array];
+//    [centeringConstraints addObject:[NSLayoutConstraint constraintWithItem:bezel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:offset.x]];
+//    [centeringConstraints addObject:[NSLayoutConstraint constraintWithItem:bezel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.f constant:offset.y]];
+//    [self applyPriority:998.f toConstraints:centeringConstraints];
+//    [self addConstraints:centeringConstraints];
 
     // Ensure minimum side margin is kept
     NSMutableArray *sideConstraints = [NSMutableArray array];
@@ -667,9 +707,16 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
     }
 }
 
-- (void)setOffset:(CGPoint)offset {
-    if (!CGPointEqualToPoint(offset, _offset)) {
-        _offset = offset;
+//- (void)setOffset:(CGPoint)offset {
+//    if (!CGPointEqualToPoint(offset, _offset)) {
+//        _offset = offset;
+//        [self setNeedsUpdateConstraints];
+//    }
+//}
+
+- (void)setInfo:(MBProgressVerticalPositionInfo)info {
+    if (!(info.position == _info.position && info.offset == _info.position)) {
+        _info = info;
         [self setNeedsUpdateConstraints];
     }
 }
@@ -1379,23 +1426,23 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
     self.bezelView.color = color;
 }
 
-- (CGFloat)yOffset {
-    return self.offset.y;
-}
+//- (CGFloat)yOffset {
+//    return self.offset.y;
+//}
 
-- (void)setYOffset:(CGFloat)yOffset {
-    MBMainThreadAssert();
-    self.offset = CGPointMake(self.offset.x, yOffset);
-}
+//- (void)setYOffset:(CGFloat)yOffset {
+//    MBMainThreadAssert();
+//    self.offset = CGPointMake(self.offset.x, yOffset);
+//}
+//
+//- (CGFloat)xOffset {
+//    return self.offset.x;
+//}
 
-- (CGFloat)xOffset {
-    return self.offset.x;
-}
-
-- (void)setXOffset:(CGFloat)xOffset {
-    MBMainThreadAssert();
-    self.offset = CGPointMake(xOffset, self.offset.y);
-}
+//- (void)setXOffset:(CGFloat)xOffset {
+//    MBMainThreadAssert();
+//    self.offset = CGPointMake(xOffset, self.offset.y);
+//}
 
 - (CGFloat)cornerRadius {
     return self.bezelView.layer.cornerRadius;
